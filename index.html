@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Empleo</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Solicitud de Empleo</h2>
+        <form id="formulario">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+
+            <label for="puesto">Puesto deseado:</label>
+            <select id="puesto" name="puesto" required>
+                <option value="">Seleccione un puesto</option>
+                <option value="desarrollador">Desarrollador</option>
+                <option value="diseñador">Diseñador</option>
+                <option value="marketing">Marketing</option>
+                <option value="soporte">Soporte Técnico</option>
+            </select>
+
+            <label for="habilidades">Habilidades:</label>
+            <textarea id="habilidades" name="habilidades" rows="3" required placeholder="Enumere sus habilidades..."></textarea>
+
+            <label for="experiencia">Experiencia laboral:</label>
+            <textarea id="experiencia" name="experiencia" rows="4" required placeholder="Describa su experiencia..."></textarea>
+
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <script>
+        // Inicializa Email.js con tu User ID
+        (function() {
+            emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de Email.js
+        })();
+
+        // Maneja el envío del formulario
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+
+            // Envía el formulario usando Email.js
+            emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this)
+                .then(function(response) {
+                    alert("Solicitud enviada con éxito!");
+                }, function(error) {
+                    alert("Error al enviar la solicitud: " + JSON.stringify(error));
+                });
+        });
+    </script>
+</body>
+</html>
