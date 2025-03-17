@@ -102,7 +102,7 @@
     <script>
         // Inicializa Email.js con tu User ID
         (function() {
-            emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de Email.js
+            emailjs.init("onQkRIirogiFveGrm"); // Reemplaza con tu User ID de Email.js
         })();
 
         // Maneja el envío del formulario
@@ -110,7 +110,7 @@
             event.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
             // Envía el formulario usando Email.js
-            emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this)
+            emailjs.sendForm("service_91z863x", "template_cphyqmd", this)
                 .then(function(response) {
                     alert("Solicitud enviada con éxito!");
                 }, function(error) {
